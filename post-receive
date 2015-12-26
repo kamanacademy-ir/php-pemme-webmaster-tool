@@ -1,0 +1,17 @@
+#!/bin/sh
+
+#
+# this file can checkout working directory if placed inside git repo hooks folder
+# have fun
+# 
+
+GITREPOPATH=/home/git/repositories/api.kamanacademy.com.git
+PROJECTPATH=/home/kamanacademy/domains/public_html/runtime
+
+echo "Checking out working directory..."
+git --work-tree=$PROJECTPATH --git-dir=$GITREPOPATH checkout -f
+echo "Done!"
+cd $PROJECTPATH
+php artisan dump-autoload
+php artisan optimize
+

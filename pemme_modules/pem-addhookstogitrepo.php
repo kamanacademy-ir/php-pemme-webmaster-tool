@@ -24,7 +24,8 @@ return array(
 	$post_receive_file = null;
 	if (!file_exists($post_receive_file_path)) {
 	    $console->writeln("post receive file does not exist, i will create one!");
-	    $post_receive_file = fopen($post_receive_file_path, "rw");
+	    $post_receive_file = fopen($post_receive_file_path, "w") 
+		    or die("Could not create file; access denied maybe!");
 	}
     },
 );
